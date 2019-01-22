@@ -170,16 +170,22 @@ THREE.VRController = function( gamepad ){
 		this.style = supported.style
 		if( supported.axes !== undefined ){
 
-			supported.axes.forEach( function( axesMap ){
+			supported.axes.forEach( function( axesMap, i ){
 
-				axes.byName[ axesMap.name ] = axesMap.indexes
+				if ( i < axes.length ){
+
+					axes.byName[ axesMap.name ] = axesMap.indexes
+				}
 			})
 		}
 		if( supported.buttons !== undefined ){
 
 			supported.buttons.forEach( function( buttonName, i ){
 
-				buttons[ i ].name = buttonName
+				if ( i < buttons.length ){
+
+					buttons[ i ].name = buttonName
+				}
 			})
 		}
 		buttonNamePrimary = supported.primary
